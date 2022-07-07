@@ -1,0 +1,64 @@
+@import "~@angular/material/theming";
+
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-header {
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+  height: 30vh;
+  min-height: 20em;
+  background-color: mat-color($mat-indigo, 500);
+
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+
+  .head-title {
+    align-self: center;
+    color: white;
+    letter-spacing: 0.1rem;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+  }
+
+  .head-sub-title {
+    align-self: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: lighter;
+  }
+
+  button.header-main-btn {
+    margin: 2rem auto 0;
+  }
+}
+
+.content {
+  margin: 0 auto;
+  min-width: 30em;
+  max-width: 1100px;
+  width: 70vw;
+
+  color: rgba(0, 0, 0, .54);
+
+  .section-title {
+    margin-top: 2rem;
+  }
+
+  .content-row {
+    margin: 2rem 0;
+    justify-content: space-between;
+
+    > * {
+      max-width: 15rem;
+      width: 15rem;
+    }
+  }
+}

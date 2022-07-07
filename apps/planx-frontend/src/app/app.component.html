@@ -1,0 +1,13 @@
+<div *ngIf="showOverlay; then loadingBlock else elseBlock"></div>
+<ng-template #loadingBlock>
+  <!--  IF LOADING!-->
+  <planx-planning-loading></planx-planning-loading>
+</ng-template>
+<ng-template #elseBlock>
+  <planx-planning-header *ngIf="!router?.isActive('login',true)"></planx-planning-header>
+</ng-template>
+<div class="content-container">
+  <div class="scrollable-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

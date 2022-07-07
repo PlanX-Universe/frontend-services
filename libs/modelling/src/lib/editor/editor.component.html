@@ -1,0 +1,73 @@
+<mat-drawer-container fxFill [formGroup]="modellingFormGroup">
+  <mat-drawer #drawer mode="side" opened
+              class="modelling-sidebar">
+    <div class="side-nav-header">
+      <button mat-button fxFlex
+              (click)="drawer.toggle(false)">
+        <fa-icon [icon]="sideNavIconOpen"></fa-icon>
+      </button>
+    </div>
+    <mat-list>
+      <div mat-subheader>Modelling Language</div>
+      <mat-form-field class="lang-selector">
+        <mat-label>Input Language</mat-label>
+        <mat-select formControlName="language">
+          <mat-option *ngFor="let lang of LANGUAGES" class="lang-selector-option"
+                      [value]="lang.key" [matTooltip]="lang.display" matTooltipPosition="right"
+                      [disabled]="!lang?.enabled">
+            <span class="lang-label">{{lang?.displayShort}}</span>
+            <span class="soon-tag" *ngIf="!lang?.enabled">soon</span>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-divider></mat-divider>
+      <div mat-subheader>Actions</div>
+      <mat-list-item>
+        <button mat-line mat-button color="primary" (click)="downloadModel()">Download Source</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-line mat-button color="primary" disabled>Validate</button>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <div mat-subheader>Hints</div>
+      <mat-list-item>
+        <a mat-button href="https://github.com/pellierd/pddl4j/tree/master/pddl" target="_blank"
+           fxLayout="row" fxLayoutAlign="start center" class="hint-action-item">
+          <fa-icon [icon]="linkIcon" style="margin-right: 0.5rem"></fa-icon>
+          <span fxFlex>PDDL examples from PDDL4J</span>
+        </a>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+    <div fxFlex></div>
+    <mat-list>
+      <div mat-subheader>Notes</div>
+      <mat-list-item>
+        <div mat-line>Introduction of Drag and Drop</div>
+        <p mat-line class="multiline description">Simply drag and drop the text file (e.g. *.pddl) over the desired text
+          input mask.
+        </p>
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
+  <mat-tab-group style="height: 100%">
+    <mat-tab label="Domain" fxLayout>
+      <planx-planning-ide fxFlex formControlName="domain">
+      </planx-planning-ide>
+    </mat-tab>
+    <mat-tab label="Problem" fxLayout>
+      <planx-planning-ide fxFlex formControlName="problem">
+      </planx-planning-ide>
+    </mat-tab>
+  </mat-tab-group>
+  <button mat-fab color="accent" style="position: absolute; bottom: 1rem; right: 1rem; z-index: 999"
+          *ngIf="modellingFormGroup.valid"
+          (click)="onClickRun()">RUN
+  </button>
+  <button mat-mini-fab color="primary"
+          *ngIf="!drawer.opened"
+          style="position: absolute; bottom: 1rem; left: 1rem; z-index: 999"
+          (click)="drawer.toggle(true)">
+    <fa-icon [icon]="sideNavIconClosed"></fa-icon>
+  </button>
+</mat-drawer-container>

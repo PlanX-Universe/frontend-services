@@ -1,0 +1,55 @@
+@import "~@angular/material/theming";
+
+.modelling-sidebar {
+  width: 20em;
+  max-width: 50vw !important;
+
+  .hint-action-item {
+    color: mat-color($mat-gray, 600);
+  }
+}
+
+.lang-selector {
+  width: calc(100% - 2rem);
+  margin: 0 1rem;
+}
+
+.lang-selector-option {
+  .lang-label {
+
+  }
+
+  .soon-tag {
+    position: absolute;
+    right: 1rem;
+    color: mat-color($mat-red, 400, 0.5);
+  }
+}
+
+.multiline {
+  white-space: normal !important;
+}
+
+.description {
+  font-size: 0.8rem !important;
+  color: mat-color($mat-gray, 600);
+}
+
+::ng-deep.mat-drawer-inner-container {
+  flex-direction: column;
+  padding-bottom: 1rem;
+}
+
+.side-nav-header {
+  height: 3rem;
+  border-bottom: solid lightgrey 1px;
+
+  button {
+    text-align: right;
+
+    fa-icon {
+      font-size: 1.5rem;
+      color: rgba(0, 0, 0, .54);
+    }
+  }
+}

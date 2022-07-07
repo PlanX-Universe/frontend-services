@@ -1,0 +1,27 @@
+::ng-deep.card-header {
+  margin-left: -1rem !important;
+}
+
+.system-state-section {
+  position: relative;
+
+  display: block;
+  padding: 1rem 1rem;
+
+  .reload-btn {
+    position: absolute;
+    right: 0;
+    top: 1rem;
+  }
+}
+
+.page-context {
+  max-height: calc(100% - 4rem);
+}
+
+.system-section {
+  $height: calc(100vh - 11.01rem);
+  height: $height !important;
+  min-height: $height;
+  max-height: $height;
+}

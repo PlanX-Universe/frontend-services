@@ -1,0 +1,52 @@
+<mat-toolbar fxLayout="row" fxLayoutGap="1rem">
+  <div class="brand" [routerLink]="homeLink">
+    <span>UIR-Planning</span>
+  </div>
+  <mat-divider vertical></mat-divider>
+  <button mat-button class="header-menu-btn"
+          matTooltip="Modelling" matTooltipShowDelay="800"
+          [class.active-route]="router.isActive('modelling',false)"
+          [routerLink]="'modelling'">
+    <fa-icon [icon]="editIcon"></fa-icon>
+  </button>
+  <button mat-button class="header-menu-btn"
+          matTooltip="Administration" matTooltipShowDelay="800"
+          [class.active-route]="router.isActive('admin',false)"
+          [routerLink]="'admin'">
+    <fa-icon [icon]="adminIcon"></fa-icon>
+  </button>
+  <button mat-button class="header-menu-btn" *ngIf="router.isActive('plan',false) as isPlanView"
+          matTooltip="Plan" matTooltipShowDelay="800"
+          [class.active-route]="isPlanView">
+    <fa-icon [icon]="solutionIcon"></fa-icon>
+  </button>
+  <span class="spacer"></span>
+  <button mat-button class="header-menu-btn"
+          [matMenuTriggerFor]="appMenu"
+          [matMenuTriggerData]="{name: currentUser}">
+    <fa-icon [icon]="menuIcon"></fa-icon>
+  </button>
+</mat-toolbar>
+
+<mat-menu #appMenu="matMenu">
+  <ng-template matMenuContent let-name="name">
+    <button mat-menu-item class="icon-btn"
+            fxLayout="row" [routerLink]="'admin'">
+      <fa-icon [icon]="settingsIcon"></fa-icon>
+      <span fxFlexAlign="fx-end center">Administration</span>
+    </button>
+    <button mat-menu-item class="icon-btn"
+            fxLayout="row"
+            (click)="onLogout()">
+      <fa-icon [icon]="logoutIcon"></fa-icon>
+      <span fxFlexAlign="fx-end center">Log off {{name}}</span>
+    </button>
+    <button mat-menu-item [routerLink]="'licences'">Licences</button>
+    <button mat-menu-item disableRipple
+            fxLayout="row" fxLayoutAlign="space-between center"
+            [disabled]="true">
+      <span>Version:</span>
+      <span>{{version}}</span>
+    </button>
+  </ng-template>
+</mat-menu>

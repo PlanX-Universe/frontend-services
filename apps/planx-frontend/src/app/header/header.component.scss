@@ -1,0 +1,66 @@
+@import "~@angular/material/theming";
+
+:host {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  z-index: 100;
+
+  @include mat-elevation(3);
+
+  mat-toolbar {
+    padding: 0 !important;
+
+    & > * {
+      height: 100%;
+    }
+
+    .brand {
+      //color: mat-color($mat-gray, 600);
+      display: flex;
+      justify-content: center;
+      padding-left: 1rem;
+
+      span {
+        align-self: center;
+        letter-spacing: 0.1rem;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .header-menu-btn {
+      width: 4rem;
+      height: 4rem;
+
+      font-size: 1.5rem;
+      color: mat-color($mat-gray, 700);
+
+      &.active-route {
+        color: mat-color($mat-indigo, 500);
+      }
+    }
+
+    .spacer {
+      flex: 1 1 auto;
+    }
+  }
+}
+
+button {
+  fa-icon {
+    //margin-right: 0.5rem;
+  }
+}
+
+.icon-btn {
+  fa-icon {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+    color: mat-color($mat-indigo, 400);
+  }
+}

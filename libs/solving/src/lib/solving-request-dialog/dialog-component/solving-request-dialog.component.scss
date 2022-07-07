@@ -1,0 +1,9 @@
+@import "~@angular/material/theming";
+
+.planner-selector-option {
+  .package-tag {
+    position: absolute;
+    right: 1rem;
+    color: mat-color($mat-blue, 400, 0.5);
+  }
+}

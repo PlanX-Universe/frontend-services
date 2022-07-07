@@ -1,0 +1,16 @@
+<mat-toolbar>
+  <h1 class="mat-title">Licences</h1>
+</mat-toolbar>
+<mat-action-list class="licence-list">
+  <a mat-list-item *ngFor="let l of LICENCES"
+     [href]="l?.url" target="_blank" class="licence-element">
+    <h2 matLine>{{l?.title}}</h2>
+    <a matLine>{{l?.reference}}</a>
+    <div matLine>
+      <span>Used @ </span>
+      <i *ngFor="let c of l?.usedAt">{{c}}, </i>
+    </div>
+    <mat-divider></mat-divider>
+  </a>
+</mat-action-list>
+

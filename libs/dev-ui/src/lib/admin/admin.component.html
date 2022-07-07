@@ -1,0 +1,30 @@
+<mat-toolbar>
+  <h1 class="mat-title">Admin</h1>
+</mat-toolbar>
+<mat-tab-group class="page-context">
+  <mat-tab label="System Overview">
+    <section class="system-section" fxFlex fxLayout="column"
+             style="overflow: hidden">
+      <planx-planning-system-functionality-graph fxFlex></planx-planning-system-functionality-graph>
+    </section>
+  </mat-tab>
+  <mat-tab label="System Status">
+    <section class="system-state-section" id="system-state" fxFlex>
+      <button mat-button color="accent" class="reload-btn"
+              matTooltip="Force system status update"
+              (click)="stateComponent.forceReload()">
+        <fa-icon [icon]="reloadIcon"></fa-icon>
+      </button>
+      <planx-planning-system-state #stateComponent></planx-planning-system-state>
+    </section>
+  </mat-tab>
+  <mat-tab label="Rabbit MQ">
+    <section class="system-section" fxFlexFill
+             style="overflow: hidden">
+      <planx-planning-rabbit-mqadmin fxFlex></planx-planning-rabbit-mqadmin>
+    </section>
+  </mat-tab>
+</mat-tab-group>
+
+
+

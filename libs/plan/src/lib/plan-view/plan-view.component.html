@@ -1,0 +1,13 @@
+<planx-planning-loading *ngIf="isLoading$ | async else app"></planx-planning-loading>
+<ng-template #app>
+  <div *ngIf="plan$.asObservable() |async" class="scroll-container">
+    <planx-planning-visualize-plan fxFlex class="content-body"
+                                 [plan$]="plan$.asObservable()"
+    ></planx-planning-visualize-plan>
+  </div>
+  <div *ngIf="error$.asObservable() |async" class="scroll-container">
+    <planx-planning-visualize-error fxFlex class="content-body"
+                                  [error$]="error$.asObservable()">
+    </planx-planning-visualize-error>
+  </div>
+</ng-template>
