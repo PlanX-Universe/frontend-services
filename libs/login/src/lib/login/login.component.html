@@ -1,0 +1,32 @@
+<div class="login-container" fxLayout="column" fxLayoutAlign="center" fxLayoutGap="1rem">
+  <div fxFlex></div>
+
+  <div class="welcome-brand">
+    <h1>Welcome to <br> <b>UIR</b> – <i>AI Planning System</i></h1>
+    <h4>usable, interoperable and reusable services</h4>
+  </div>
+
+  <form class="login-form" [formGroup]="loginForm" fxLayout="column" fxLayoutGap="0.5rem" fxFlexAlign="center">
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" type="password">
+    </mat-form-field>
+    <br>
+    <button mat-flat-button color="primary" type="submit"
+            [disabled]="!loginForm.valid"
+            (click)="onSubmit()">
+      Login
+    </button>
+  </form>
+  <div fxFlex></div>
+  <div class="version-info">Version: {{version || 'v.?'}} - © 2020</div>
+</div>
+<div class="info-container" fxFlex fxHide.lt-sm fxLayout="row" fxLayoutAlign="center">
+  <planx-planning-login-info class="info-slider"
+                           fxFlex fxFlexAlign="center center">
+  </planx-planning-login-info>
+</div>

@@ -1,0 +1,6 @@
+@import "~@angular/flex-layout/mq";
+
+@function get-breakpoint($br) {
+  // Non-overlapping Material Design breakpoints
+  @return map-get(map-get($breakpoints, $br), end)
+}

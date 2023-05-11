@@ -1,0 +1,25 @@
+@import "~@angular/material/theming";
+
+html, body {
+  height: 100vh;
+  width: 100vw;
+
+  margin: 0 !important;
+  overflow: hidden !important;
+}
+
+.mat-tab-body-wrapper {
+  flex: 1;
+}
+
+// blocks ace font style
+//* {
+//  font-family: Roboto, "Helvetica Neue", sans-serif;
+//}
+
+/**
+ * shows an border if the file is over a drop zone!
+ */
+.file-over {
+  border: mat-color($mat-orange, 400) 0.2rem dashed;
+}

@@ -1,0 +1,13 @@
+<ace-editor fxFill
+            planxPlanningDnd
+            #ace
+            [(text)]="code"
+            [mode]="codeMode"
+            [theme]="'nord_dark'"
+            [options]="options"
+            [readOnly]="readOnly"
+            [autoUpdateContent]="true"
+            [durationBeforeCallback]="1000"
+            (textChanged)="onChange($event)"
+            (fileDropped)="onFileDropped($event)"
+></ace-editor>

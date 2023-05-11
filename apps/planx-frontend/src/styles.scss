@@ -1,0 +1,22 @@
+@import "~@angular/flex-layout/mq";
+@import "~@angular/material/theming";
+@import "assets/styles/variables";
+@import "assets/styles/global";
+
+@include layout-bp(lt-sm) {
+  planx-planning-header.mat-toolbar {
+    height: $header-height;
+  }
+}
+
+
+// Notifications
+.error-msg {
+  background-color: mat-color($mat-red, 600);
+  color: white;
+}
+
+.success-msg {
+  background-color: mat-color($mat-green, 600);
+  color: white;
+}

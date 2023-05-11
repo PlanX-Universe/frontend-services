@@ -1,0 +1,29 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@planx-planning/dev-ui": ["libs/dev-ui/src/index.ts"],
+      "@planx-planning/login": ["libs/login/src/index.ts"],
+      "@planx-planning/shared": ["libs/shared/src/index.ts"],
+      "@planx-planning/solving": ["libs/solving/src/index.ts"],
+      "@planx-planning/editor": ["libs/editor/src/index.ts"],
+      "@planx-planning/modelling": ["libs/modelling/src/index.ts"],
+      "@planx-planning/plan": ["libs/plan/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

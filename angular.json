@@ -1,0 +1,498 @@
+{
+  "version": 1,
+  "projects": {
+    "planx-frontend": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/planx-frontend",
+      "sourceRoot": "apps/planx-frontend/src",
+      "prefix": "planx-planning",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/planx-frontend",
+            "index": "apps/planx-frontend/src/index.html",
+            "main": "apps/planx-frontend/src/main.ts",
+            "polyfills": "apps/planx-frontend/src/polyfills.ts",
+            "tsConfig": "apps/planx-frontend/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/planx-frontend/src/favicon.ico",
+              "apps/planx-frontend/src/assets"
+            ],
+            "styles": [
+              "apps/planx-frontend/src/loading.scss",
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/planx-frontend/src/styles.scss"
+            ],
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "webcola",
+              "dagre"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/planx-frontend/src/environments/environment.ts",
+                  "with": "apps/planx-frontend/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "planx-frontend:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "planx-frontend:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "planx-frontend:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/planx-frontend/tsconfig.app.json",
+              "apps/planx-frontend/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/planx-frontend/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/planx-frontend/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "compodoc": {
+          "builder": "@twittwer/compodoc:compodoc",
+          "options": {
+            "tsConfig": "apps/planx-frontend/tsconfig.compodoc.json",
+            "outputPath": "dist/compodoc/planx-frontend",
+            "workspaceDocs": true
+          },
+          "configurations": {
+            "json": {
+              "exportFormat": "json"
+            }
+          }
+        }
+      }
+    },
+    "planx-frontend-e2e": {
+      "root": "apps/planx-frontend-e2e",
+      "sourceRoot": "apps/planx-frontend-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/planx-frontend-e2e/cypress.json",
+            "tsConfig": "apps/planx-frontend-e2e/tsconfig.e2e.json",
+            "devServerTarget": "planx-frontend:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "planx-frontend:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/planx-frontend-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/planx-frontend-e2e/**/*"
+            ]
+          }
+        }
+      }
+    },
+    "dev-ui": {
+      "projectType": "library",
+      "root": "libs/dev-ui",
+      "sourceRoot": "libs/dev-ui/src",
+      "prefix": "planx-planning",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/dev-ui/tsconfig.lib.json",
+              "libs/dev-ui/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/dev-ui/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/dev-ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "login": {
+      "projectType": "library",
+      "root": "libs/login",
+      "sourceRoot": "libs/login/src",
+      "prefix": "planx-planning",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/login/tsconfig.lib.json",
+              "libs/login/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/login/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/login/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "compodoc": {
+          "builder": "@twittwer/compodoc:compodoc",
+          "options": {
+            "tsConfig": "libs/login/tsconfig.compodoc.json",
+            "outputPath": "dist/compodoc/login",
+            "workspaceDocs": true
+          },
+          "configurations": {
+            "json": {
+              "exportFormat": "json"
+            }
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "shared": {
+      "projectType": "library",
+      "root": "libs/shared",
+      "sourceRoot": "libs/shared/src",
+      "prefix": "planx-planning",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/tsconfig.lib.json",
+              "libs/shared/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "compodoc": {
+          "builder": "@twittwer/compodoc:compodoc",
+          "options": {
+            "tsConfig": "libs/shared/tsconfig.compodoc.json",
+            "outputPath": "dist/compodoc/shared",
+            "workspaceDocs": true
+          },
+          "configurations": {
+            "json": {
+              "exportFormat": "json"
+            }
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "solving": {
+      "projectType": "library",
+      "root": "libs/solving",
+      "sourceRoot": "libs/solving/src",
+      "prefix": "planx-planning",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/solving/tsconfig.lib.json",
+              "libs/solving/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/solving/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/solving/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "compodoc": {
+          "builder": "@twittwer/compodoc:compodoc",
+          "options": {
+            "tsConfig": "libs/solving/tsconfig.compodoc.json",
+            "outputPath": "dist/compodoc/solving",
+            "workspaceDocs": true
+          },
+          "configurations": {
+            "json": {
+              "exportFormat": "json"
+            }
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "editor": {
+      "projectType": "library",
+      "root": "libs/editor",
+      "sourceRoot": "libs/editor/src",
+      "prefix": "planx-planning",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/editor/tsconfig.lib.json",
+              "libs/editor/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/editor/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/editor/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "modelling": {
+      "projectType": "library",
+      "root": "libs/modelling",
+      "sourceRoot": "libs/modelling/src",
+      "prefix": "planx-planning",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/modelling/tsconfig.lib.json",
+              "libs/modelling/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/modelling/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/modelling/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "compodoc": {
+          "builder": "@twittwer/compodoc:compodoc",
+          "options": {
+            "tsConfig": "libs/modelling/tsconfig.compodoc.json",
+            "outputPath": "dist/compodoc/modelling",
+            "workspaceDocs": true
+          },
+          "configurations": {
+            "json": {
+              "exportFormat": "json"
+            }
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "plan": {
+      "projectType": "library",
+      "root": "libs/plan",
+      "sourceRoot": "libs/plan/src",
+      "prefix": "planx-planning",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/plan/tsconfig.lib.json",
+              "libs/plan/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/plan/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/plan/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "compodoc": {
+          "builder": "@twittwer/compodoc:compodoc",
+          "options": {
+            "tsConfig": "libs/plan/tsconfig.compodoc.json",
+            "outputPath": "dist/compodoc/plan",
+            "workspaceDocs": true
+          },
+          "configurations": {
+            "json": {
+              "exportFormat": "json"
+            }
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "planx-frontend"
+}

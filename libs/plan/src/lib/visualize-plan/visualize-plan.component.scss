@@ -1,0 +1,26 @@
+@import "~@angular/material/theming";
+
+:host {
+  padding: 1rem 2rem;
+}
+
+.actions-list {
+  margin-bottom: 2rem;
+
+  .content-column {
+    $border-color: mat-color($mat-gray, 300);
+    border-left: $border-color solid 1px;
+    border-right: $border-color solid 1px;
+    padding: 0 1rem;
+  }
+
+  mat-list-item {
+    .index-column {
+      margin-right: 1rem;
+    }
+
+    .costs-column {
+      margin-left: 1rem;
+    }
+  }
+}

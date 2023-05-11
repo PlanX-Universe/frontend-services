@@ -1,0 +1,62 @@
+@import "~@angular/material/theming";
+@import "apps/planx-frontend/src/assets/styles/functions";
+@import "~@angular/flex-layout/mq";
+
+
+$breakpoint-width: get-breakpoint(xs);
+$max-width: 25rem;
+$min-width: calc(#{$breakpoint-width} / 1.5);
+
+:host {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+
+  background-color: mat-color($mat-gray, 50);
+
+  .welcome-brand {
+    padding: 0 2rem;
+    text-align: center;
+  }
+
+  .login-container {
+    width: 100%;
+    max-width: $max-width;
+    min-width: $min-width;
+
+    @include layout-bp(lt-sm) {
+      & {
+        max-width: 100%;
+      }
+    }
+
+    .login-form {
+      width: 100%;
+      min-width: calc(#{$min-width}-4rem);
+      max-width: calc(#{$breakpoint-width}-4rem);
+      padding: 2rem;
+    }
+
+    .version-info {
+      margin-bottom: 1rem;
+      text-align: center;
+      color: mat-color($mat-gray, 600);
+    }
+  }
+
+  .info-container {
+    border-left: mat-color($mat-gray, 800) solid 0.05rem;
+    background-color: white;
+
+    .info-slider {
+      max-width: 80%;
+    }
+  }
+}

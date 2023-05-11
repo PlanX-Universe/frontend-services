@@ -1,0 +1,32 @@
+<form *ngIf="error$ |async as error" fxLayout="column" fxLayoutGap="1rem"
+      class="error-view">
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        ERROR:
+      </mat-panel-title>
+      <mat-panel-description *ngIf="error?.origin">
+        Error occurred on {{error?.origin || 'service'}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-form-field class="full-width" appearance="fill">
+      <textarea matInput readonly
+                [formControl]="errorMessageCtrl"></textarea>
+    </mat-form-field>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel fxHide="!error?.stackTrace">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Stacktrace:
+      </mat-panel-title>
+      <mat-panel-description>
+        Full service stacktrace
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-form-field class="full-width" appearance="fill">
+      <textarea matInput readonly
+                [formControl]="stacktraceCtrl"></textarea>
+    </mat-form-field>
+  </mat-expansion-panel>
+</form>

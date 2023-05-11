@@ -1,0 +1,55 @@
+<mat-toolbar>
+  <h1 class="mat-title">Modelling</h1>
+</mat-toolbar>
+<div fxLayout="row warp" fxLayoutAlign="space-between" class="modelling-overview">
+  <mat-card class="model-card" fxFlex="48" fxFlex.lt-md="100" fxFlex.gt-lg="30">
+    <mat-card-header class="model-card-header">
+      <mat-card-title>Manually</mat-card-title>
+      <mat-card-subtitle>Only text input</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        Plannning models can be entered via textual input in a Web IDE.
+        Several modeling languages are supported (e.g. PDDL, SHOP, HDDL).
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button disabled>Create Domain</button>
+      <button mat-button color="primary" matTooltip="Domain and Problem"
+              routerLink="editor">
+        Create full Model
+      </button>
+      <button mat-button disabled>Create Problem</button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card class="model-card" fxFlex="48" fxFlex.lt-md="100" fxFlex.gt-lg="30">
+    <mat-card-header class="model-card-header">
+      <mat-card-title>Interface</mat-card-title>
+      <mat-card-subtitle>Graphical modelling</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        The modeling of the planning domain and problems is supported by graphical input.
+        No modeling code needs to be written.
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button disabled>Start Modelling</button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card class="model-card" fxFlex="48" fxFlex.lt-md="100" fxFlex.gt-lg="30">
+    <mat-card-header class="model-card-header">
+      <mat-card-title>Automated</mat-card-title>
+      <mat-card-subtitle>Sensor-based modelling</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        In this mode you only need to create a configuration that automates the creation of models.
+        This option is particularly suitable for IoT and cyber-physical systems.
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button disabled>Start Configuration</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

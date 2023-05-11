@@ -1,0 +1,24 @@
+<div fxLayout="column" *ngIf="(statusSubject$ | async) as systemStatus" fxLayoutGap="1rem">
+  <div *ngFor="let cGroup of systemStatus.functionalitieslityGroups" class="system-group-section">
+    <h4 class="mat-title">{{cGroup.name}}:
+      <span matBadgePosition="after" matBadgeColor="primary" matBadgeOverlap="false" matBadgeSize="medium"
+            [matBadge]="cGroup.functionalities?.length"> </span>
+    </h4>
+    <div fxLayout="row" fxLayoutGap="1rem" class="system-card-container">
+      <mat-card *ngFor="let c of cGroup.functionalities" class="system-card">
+        <mat-card-header class="card-header">
+          <mat-card-title>{{c.displayTitle}}</mat-card-title>
+          <mat-card-subtitle>{{c.identifier}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div>Status: <span>{{c.status}}</span></div>
+          <div *ngIf="c?.connectedSince">Available Since:
+            <small>{{c?.connectedSince | date:'dd.MM.yyyy - HH:mm'}}</small></div>
+          <p *ngIf="c?.infoText">
+            {{c.infoText}}
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

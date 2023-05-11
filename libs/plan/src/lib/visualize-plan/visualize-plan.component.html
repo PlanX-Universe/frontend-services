@@ -1,0 +1,40 @@
+<ng-container [ngSwitch]="planType" *ngIf="plan$ | async as currentPlan">
+  <ng-container *ngSwitchCase="PlanType.Sequential">
+    <h3 class="mat-title">Sequential Plan</h3>
+    <!--  Sequential Plan -->
+    <mat-action-list dense class="actions-list">
+      <mat-divider></mat-divider>
+      <mat-list-item *ngFor="let action of currentPlan?.actions">
+        <div class="index-column" matTooltip="time step">
+          <span>{{action?.momentInTime| number:'3.0'}}</span>
+        </div>
+        <div class="content-column" fxFlex fxLayout="column">
+          <div class="action-header">
+            <strong matTooltip="action name">{{action?.name}}</strong>
+            <span *ngIf="action?.parameters"
+                  matTooltip="parameter type">
+              {{parameters2String(action?.parameters)}}
+            </span>
+          </div>
+          <div class="action-content" fxLayout="row" fxLayoutGap="0.5rem">
+            <span *ngFor="let p of action?.instantiations"
+                  matTooltip="parameter instance">{{p}}</span>
+          </div>
+        </div>
+        <div class="costs-column" matTooltip="action costs">
+          <span>{{action?.cost | number:'0.2'}}$</span>
+        </div>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+      <mat-list-item *ngIf="currentPlan?.actions" [disableRipple]="true">
+        <div fxFlex fxLayoutAlign="space-between center">
+          <span>Plan total cost:</span>
+          <strong fxFlexAlign="right">{{currentPlan?.cost | number:'0.2'}}$</strong>
+        </div>
+      </mat-list-item>
+    </mat-action-list>
+  </ng-container>
+</ng-container>
+
+
+

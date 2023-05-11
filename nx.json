@@ -1,0 +1,54 @@
+{
+  "npmScope": "planx-planning",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.base.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e", "compodoc"]
+      }
+    }
+  },
+  "projects": {
+    "planx-frontend": {
+      "tags": []
+    },
+    "planx-frontend-e2e": {
+      "tags": [],
+      "implicitDependencies": ["planx-frontend"]
+    },
+    "dev-ui": {
+      "tags": []
+    },
+    "login": {
+      "tags": []
+    },
+    "shared": {
+      "tags": []
+    },
+    "solving": {
+      "tags": []
+    },
+    "editor": {
+      "tags": []
+    },
+    "modelling": {
+      "tags": []
+    },
+    "plan": {
+      "tags": []
+    }
+  }
+}
